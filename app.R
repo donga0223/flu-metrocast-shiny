@@ -1,4 +1,4 @@
-source("prepare_data.R")
+#source("prepare_data.R")
 
 library(shiny)
 library(dplyr)
@@ -11,13 +11,16 @@ library(patchwork)
 library(RColorBrewer)
 library(jsonlite)
 
-all_forecasts   <- readRDS("all_forecasts.rds")
-historical_data <- readRDS("historical_data.rds")
-target_data     <- readRDS("target_data.rds")
-scored_q        <- readRDS("scored_q.rds")
-mwis_ref        <- readRDS("mwis_ref.rds")
-forecasts_wide  <- readRDS("forecasts_wide.rds")
-locations       <- readRDS("locations.rds")
+base_data <- "https://raw.githubusercontent.com/donga0223/flu-metrocast-shiny/main/data"
+
+all_forecasts   <- readRDS(url(paste0(base_data, "/all_forecasts.rds")))
+historical_data <- readRDS(url(paste0(base_data, "/historical_data.rds")))
+target_data     <- readRDS(url(paste0(base_data, "/target_data.rds")))
+scored_q        <- readRDS(url(paste0(base_data, "/scored_q.rds")))
+mwis_ref        <- readRDS(url(paste0(base_data, "/mwis_ref.rds")))
+forecasts_wide  <- readRDS(url(paste0(base_data, "/forecasts_wide.rds")))
+locations       <- readRDS(url(paste0(base_data, "/locations.rds")))
+
 
 ref_date <- max(unique(all_forecasts$reference_date))
 current_season_year <- if (month(ref_date) >= 8) year(ref_date) else year(ref_date) - 1
