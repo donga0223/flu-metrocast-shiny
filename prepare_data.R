@@ -6,8 +6,8 @@ library(scoringutils)
 library(httr)
 library(jsonlite)
 
-base_raw <- "https://raw.githubusercontent.com/gongelaine/flu-metrocast/main"
-base_api <- "https://api.github.com/repos/gongelaine/flu-metrocast"
+base_raw <- "https://raw.githubusercontent.com/reichlab/flu-metrocast/main"
+base_api <- "https://api.github.com/repos/reichlab/flu-metrocast"
 
 locations  <- read_csv(paste0(base_raw, "/auxiliary-data/locations.csv"), show_col_types = FALSE)
 saveRDS(locations, "data/locations.rds")
